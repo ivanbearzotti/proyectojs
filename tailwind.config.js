@@ -8,6 +8,10 @@ module.exports = {
       },
       colors: {
         gris: '#343434',
+        grisosc: '#1B1B1B',
+        bandit1: '#FF4100',
+        bandit2: '#9FF9E4',
+        bullit: '#313C46',
       },
     },
   },
