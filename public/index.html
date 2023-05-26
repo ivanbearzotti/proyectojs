@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOX ICONS -->
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- TAILWIND -->
     <link rel="stylesheet" href="./css/tailwind.css">
     <!-- GOOGLE FONTS -->
@@ -69,11 +69,11 @@
 
 
 
-        <div class="container grid grid-cols-1 px-10 pb-2 gap-4 md:grid md:grid-cols-2 md:gap-8">
+        <div class="container grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8">
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
-                    <img src="./assets/img/bandit1.png" alt="Bandit XVI" class="w-full transition duration-300 hover:scale-105">
+                    <img src="./assets/img/bandit1.png" alt="Bandit XVI" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
                 </div>
                 <div class="card-info flex flex-col gap-1">
                     <div class="name-description-price flex justify-between">
@@ -112,7 +112,7 @@
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
-                    <img src="./assets/img/wtf.png" alt="WTF" class="w-full transition duration-300 hover:scale-105">
+                    <img src="./assets/img/wtf.png" alt="WTF" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
                 </div>
                 <div class="card-info flex flex-col gap-1">
                     <div class="name-description-price flex justify-between">
@@ -149,7 +149,7 @@
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
-                    <img src="./assets/img/bullit.png" alt="Bullit" class="w-full transition duration-300 hover:scale-105">
+                    <img src="./assets/img/bullit.png" alt="Bullit" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
                 </div>
                 <div class="card-info flex flex-col gap-1">
                     <div class="name-description-price flex justify-between">
@@ -188,7 +188,7 @@
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
-                    <img src="./assets/img/breeze.png" alt="Breeze" class="w-full transition duration-300 hover:scale-105">
+                    <img src="./assets/img/breeze.png" alt="Breeze" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
                 </div>
                 <div class="card-info flex flex-col gap-1">
                     <div class="name-description-price flex justify-between">
@@ -226,8 +226,48 @@
 
         </div>
 
-        
-
     </main>
+
+    <footer class="bg-gris">
+
+        <div class="container grid grid-cols-1 justify-center items-center py-10 px-10 gap-12">
+
+            <div class="footer1 flex flex-col justify-center items-center gap-2">
+                <span class="font-poppins font-semibold text-white">RESOURCES</span>
+                <nav>
+                    <ul class="list-none flex flex-col justify-center items-center gap-1">
+                        <li><a href=""><h2 class="font-poppins font-light text-gray-200">Kitesurf</h2></a></li>
+                        <li><a href=""><h2 class="font-poppins font-light text-gray-200">Foil</h2></a></li>
+                        <li><a href=""><h2 class="font-poppins font-light text-gray-200">Surf Foil</h2></a></li>
+                        <li><a href=""><h2 class="font-poppins font-light text-gray-200">Wing Foil</h2></a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer2 flex flex-col justify-center items-center gap-2">
+                <span class="font-poppins font-semibold text-white">NEWSLETTER</span>
+                <p class="font-poppins font-light text-gray-200 text-center">Get exclusive news about F-ONE products & events</p>
+                <button type="submit" class="font-poppins font-bold text-gris bg-white px-4 py-2 rounded-lg">Subscribe</button>
+            </div>
+
+            <div class="footer3 flex flex-col justify-center items-center gap-2">
+                <span class="font-poppins font-semibold text-white">JOIN THE F-ONE COMMUNITTY</span>
+                <div class="social flex gap-4">
+                    <i class='bx bxl-facebook text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-instagram text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-youtube text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-vimeo text-gray-200 text-4xl'></i>
+                </div>
+            </div>
+
+            <div class="footer4 copyright flex flex-col justify-center items-center">
+                <p class="font-poppins font-light text-gray-200 text-sm"> Copyright © 2023 Bearzotti, Iván Danilo</p>
+                <p class="font-poppins font-light text-gray-200 text-sm">All rights reserved</p>
+            </div>
+
+        </div>
+
+    </footer>
+
 </body>
 </html>
