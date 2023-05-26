@@ -12,6 +12,8 @@ module.exports = {
         bandit1: '#FF4100',
         bandit2: '#9FF9E4',
         bullit: '#313C46',
+        breeze: '#E4551D',
+        border: '#E1E3E6',
       },
     },
   },
