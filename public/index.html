@@ -13,7 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
     <!-- TÍTULO -->
-    <title>Document</title>
+    <title>F-ONE</title>
+
+    <!-- npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --watch -->
+
 </head>
 <body>
 
@@ -22,9 +25,9 @@
     <header class="sticky top-0 z-20">
         <nav class="container h-20 w-full px-6 flex items-center justify-between bg-white">
             <!-- <a href=""><box-icon name='menu' class="w-auto h-7"></box-icon></a> -->
-            <a href=""><img src="./assets/img/menu.png" alt=""></a>
+            <i class='bx bx-menu text-xl'></i>
             <a href="index.html"><img src="./assets/img/logo2.png" alt="" class="w-auto h-5 "></a>
-            <a href=""><img src="./assets/img/cart.png" alt=""></a>
+            <i class='bx bx-cart-alt text-xl'></i>
             <!-- <a href=""><box-icon name='cart' class="w-auto h-7"></box-icon></a> -->
         </nav>
     </header>
@@ -69,7 +72,7 @@
 
 
 
-        <div class="container grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8">
+        <div class="container grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8 lg:grid lg:grid-cols-4">
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
@@ -230,7 +233,7 @@
 
     <footer class="bg-gris">
 
-        <div class="container grid grid-cols-1 justify-center items-center py-10 px-10 gap-12">
+        <div class="container grid grid-cols-1 justify-center items-center py-16 px-10 gap-12">
 
             <div class="footer1 flex flex-col justify-center items-center gap-2">
                 <span class="font-poppins font-semibold text-white">RESOURCES</span>
