@@ -20,21 +20,36 @@
 </head>
 <body>
 
-
-
-    <header class="sticky top-0 z-20">
-        <nav class="container h-20 w-full px-6 flex items-center justify-between bg-white">
-            <!-- <a href=""><box-icon name='menu' class="w-auto h-7"></box-icon></a> -->
-            <i class='bx bx-menu text-2xl'></i>
-            <a href="index.html"><img src="./assets/img/logo2.png" alt="" class="w-auto h-5 "></a>
-            <i class='bx bx-cart-alt text-2xl'></i>
-            <!-- <a href=""><box-icon name='cart' class="w-auto h-7"></box-icon></a> -->
-        </nav>
+    <header class="sticky top-0 z-20 flex flex-col">
+        <div class="h-20 w-full px-6 flex items-center justify-between bg-white">
+            <i class='bx bx-menu cursor-pointer text-2xl lg:hidden'></i>
+            <i class='bx bx-x cursor-pointer text-2xl hidden'></i>
+            <a href="index.html"><img src="./assets/img/logo2.png" alt="" class="w-auto h-5"></a>
+            <nav class="hidden lg:flex">
+                <ul class="lg:flex lg:gap-14">
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">WING FOIL</a></li>
+                </ul>
+            </nav>
+            <i class='bx bx-cart-alt cursor-pointer text-2xl'></i>
+        </div>
+        <div class="mobile-menu h-screen w-full px-6 pt-16 hidden items-center justify-between z-30 bg-gray-50">
+            <nav class="h-full w-full flex justify-center">
+                <ul class="flex flex-col items-center gap-8">
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">WING FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">F-ONE</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
 
-
-    <main class="bg-gray-50">
+    <!-- <main class="bg-gray-50">
 
 
         <div class="container grid grid-cols-1">
@@ -187,8 +202,6 @@
                 </div>
             </div>
 
-            <!--  NEW CARD -->
-
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
                     <img src="./assets/img/breeze.png" alt="Breeze" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
@@ -270,7 +283,9 @@
 
         </div>
 
-    </footer>
+    </footer> -->
+
+    <script src="./js/main.js"></script>
 
 </body>
 </html>
