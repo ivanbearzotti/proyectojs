@@ -13,7 +13,10 @@ module.exports = {
         bandit2: '#9FF9E4',
         bullit: '#313C46',
         breeze: '#E4551D',
-        border: '#E1E3E6',
+        border: '#E3E3E3',
+      },
+      spacing: {
+        '128': '32rem'
       },
     },
   },

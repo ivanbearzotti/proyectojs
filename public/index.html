@@ -21,13 +21,13 @@
 <body>
 
     <header class="sticky top-0 z-20 flex flex-col">
-        <div class="h-20 w-full px-6 flex items-center justify-between bg-white">
+        <div class="sticky top-0 z-40 h-20 w-full px-6 flex items-center justify-between bg-white border-b border-solid border-border">
             <i class='bx bx-menu cursor-pointer text-2xl lg:hidden'></i>
             <i class='bx bx-x cursor-pointer text-2xl hidden'></i>
             <a href="index.html"><img src="./assets/img/logo2.png" alt="" class="w-auto h-5"></a>
             <nav class="hidden lg:flex">
                 <ul class="lg:flex lg:gap-14">
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
+                    <li class=""><a href="" class="font-poppins font-bold text-black">KITESURF</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">WING FOIL</a></li>
@@ -35,7 +35,7 @@
             </nav>
             <i class='bx bx-cart-alt cursor-pointer text-2xl'></i>
         </div>
-        <div class="mobile-menu h-screen w-full px-6 pt-16 hidden items-center justify-between z-30 bg-gray-50">
+        <div class="container mobile-menu w-full h-screen px-6 pt-16 hidden items-center justify-between z-30 bg-gray-50">
             <nav class="h-full w-full flex justify-center">
                 <ul class="flex flex-col items-center gap-8">
                     <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
@@ -49,45 +49,45 @@
     </header>
 
 
-    <main class="bg-gray-50">
+    <main class="main bg-gray-50">
 
 
-        <div class="container grid grid-cols-1">
-            <div class="container h-32 relative flex items-center justify-center overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid lg:grid-cols-4">
+            <div class="h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-kite.png" alt="" class="absolute w-full">
                 <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Kitesurf</h2></a>
             </div>
-            <div class="container h-32 relative flex items-center justify-center overflow-hidden">
+            <div class="h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-foil.png" alt="" class="absolute w-full">
                 <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Foil</h2></a>
             </div>
-            <div class="container h-32 relative flex items-center justify-center overflow-hidden">
+            <div class="h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-surffoil.png" alt="" class="absolute w-full">
                 <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Surf Foil</h2></a>
             </div>
-            <div class="container h-32 relative flex items-center justify-center overflow-hidden">
+            <div class="h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-wingfoil.jpg" alt="" class="absolute w-full">
                 <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Wing Foil</h2></a>
             </div>
         </div>
-        <div class="container grid grid-template-col1">
-            <div class="container h-36 flex flex-col justify-center items-center">
+        <div class="grid grid-template-col1">
+            <div class="h-36 flex flex-col justify-center items-center">
                 <p class="font-poppins font-normal text-gris text-center">Enjoy all conditions,</p>
                 <p class="font-poppins font-normal text-gris text-center">Try out new things,</p>
                 <p class="font-poppins font-normal text-gris text-center">Open up your playground,</p>
                 <p class="font-poppins font-normal text-gris text-center">Join #foneculture</p>
             </div>
-            <div class="container">
-                <img src="./assets/img/banner1.png" alt="">
+            <div class="w-full">
+                <img src="./assets/img/banner1.png" alt="" class="w-full">
             </div>
         </div>
-        <div class="container p-6">
+        <div class="p-6">
             <p class="font-poppins font-normal text-gris text-center text-2xl">2023 KITE COLLECTION</p>
         </div>
 
 
 
-        <div class="container grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8 lg:grid lg:grid-cols-4">
+        <div class="grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8 lg:grid lg:grid-cols-4">
 
             <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
                 <div class="card-img flex justify-center">
@@ -97,7 +97,7 @@
                     <div class="name-description-price flex justify-between">
                         <div class="name-description">
                             <h3 class="font-poppins font-bold text-xl">Bandit XVI</h3>
-                            <p class="font-poppins font-normal text-gris">Freeride kiteboarding</p>
+                            <p class="font-poppins font-normal text-gris">Freeride</p>
                         </div>
                         <div class="price">
                             <p class="font-poppins font-bold text-xl">$899</p>
@@ -136,7 +136,7 @@
                     <div class="name-description-price flex justify-between">
                         <div class="name-description">
                             <h3 class="font-poppins font-bold text-xl">WTF?! V2</h3>
-                            <p class="font-poppins font-normal text-gris">Freestyle kiteboarding</p>
+                            <p class="font-poppins font-normal text-gris">Freestyle</p>
                         </div>
                         <div class="price">
                             <p class="font-poppins font-bold text-xl">$899</p>
@@ -173,7 +173,7 @@
                     <div class="name-description-price flex justify-between">
                         <div class="name-description">
                             <h3 class="font-poppins font-bold text-xl">Bullit V2</h3>
-                            <p class="font-poppins font-normal text-gris">Big Air kiteboarding</p>
+                            <p class="font-poppins font-normal text-gris">Big Air</p>
                         </div>
                         <div class="price">
                             <p class="font-poppins font-bold text-xl">$899</p>
@@ -210,7 +210,7 @@
                     <div class="name-description-price flex justify-between">
                         <div class="name-description">
                             <h3 class="font-poppins font-bold text-xl">Breeze V4</h3>
-                            <p class="font-poppins font-normal text-gris">Ligth Wind kiteboarding</p>
+                            <p class="font-poppins font-normal text-gris">Ligth Wind</p>
                         </div>
                         <div class="price">
                             <p class="font-poppins font-bold text-xl">$899</p>
@@ -244,11 +244,21 @@
 
     </main>
 
-    <footer class="bg-gris">
+    <footer class="footer bg-gris">
 
-        <div class="container grid grid-cols-1 justify-center items-center py-16 px-10 gap-12">
+        <div class="grid grid-cols-1 justify-center items-center pt-16 pb-8 px-10 gap-12 lg:grid-cols-3">
 
             <div class="footer1 flex flex-col justify-center items-center gap-2">
+                <span class="font-poppins font-semibold text-white">JOIN THE F-ONE COMMUNITTY</span>
+                <div class="social flex gap-4">
+                    <i class='bx bxl-facebook text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-instagram text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-youtube text-gray-200 text-4xl'></i>
+                    <i class='bx bxl-vimeo text-gray-200 text-4xl'></i>
+                </div>
+            </div>
+
+            <div class="footer2 flex flex-col justify-center items-center gap-2">
                 <span class="font-poppins font-semibold text-white">RESOURCES</span>
                 <nav>
                     <ul class="list-none flex flex-col justify-center items-center gap-1">
@@ -260,28 +270,24 @@
                 </nav>
             </div>
 
-            <div class="footer2 flex flex-col justify-center items-center gap-2">
+            <div class="footer3 flex flex-col justify-center items-center gap-2">
                 <span class="font-poppins font-semibold text-white">NEWSLETTER</span>
                 <p class="font-poppins font-light text-gray-200 text-center">Get exclusive news about F-ONE products & events</p>
                 <button type="submit" class="font-poppins font-bold text-gris bg-white px-4 py-2 rounded-lg">Subscribe</button>
             </div>
 
-            <div class="footer3 flex flex-col justify-center items-center gap-2">
-                <span class="font-poppins font-semibold text-white">JOIN THE F-ONE COMMUNITTY</span>
-                <div class="social flex gap-4">
-                    <i class='bx bxl-facebook text-gray-200 text-4xl'></i>
-                    <i class='bx bxl-instagram text-gray-200 text-4xl'></i>
-                    <i class='bx bxl-youtube text-gray-200 text-4xl'></i>
-                    <i class='bx bxl-vimeo text-gray-200 text-4xl'></i>
-                </div>
-            </div>
+            
 
-            <div class="footer4 copyright flex flex-col justify-center items-center">
+        </div>
+
+        <div class="px-10">
+            <div class="footer4 copyright flex flex-col justify-center items-center py-4 pt-8 pb-8 border-t border-solid border-gray-200">
                 <p class="font-poppins font-light text-gray-200 text-sm"> Copyright © 2023 Bearzotti, Iván Danilo</p>
                 <p class="font-poppins font-light text-gray-200 text-sm">All rights reserved</p>
             </div>
-
         </div>
+
+        
 
     </footer>
 
