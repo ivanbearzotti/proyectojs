@@ -1,3 +1,5 @@
+// CARRITO
+
 let openMenu = document.querySelector('.bx-menu');
 
 let closeMenu = document.querySelector('.bx-x-1');
@@ -50,4 +52,25 @@ closeCart.addEventListener('click', () => {
     cartMenu.classList.add("hidden");
     main.classList.remove("hidden");
     footer.classList.remove("hidden");
+})
+
+// CONTADOR DE CANTIDAD
+
+let menos = document.querySelector(".menos");
+let mas = document.querySelector(".mas");
+let num = document.querySelector(".num");
+
+let a = 1;
+
+mas.addEventListener("click", () => {
+    a++;
+    num.innerText = a;
+})
+
+menos.addEventListener("click", () => {
+    if(a>1){
+        a--;
+        num.innerText = a;
+    }
+    
 })
