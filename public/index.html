@@ -50,20 +50,32 @@
                 </ul>
             </nav>
         </div>
-        <div class="cart-menu w-full h-full px-6 pt-16 hidden items-center justify-between z-30">
-            <nav class="flex justify-center">
-                <!-- ESTE NAV no va, va un div, conservas el H-FULL -->
-                <ul class="flex flex-col items-center gap-8">
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
-                </ul>
-            </nav>
+        <div class="container cart-menu w-full h-full px-6 pt-16 items-center justify-between z-30 ">
+            <div class="cart-card flex bg-white p-8 gap-8 rounded-xl drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
+                <div class="cart-card-img">
+                    <img src="./assets/img/bandit1.png" alt="" class="h-36">
+                </div>
+                <div class="cart-card-info">
+                    <div class="name-description">
+                        <h3 class="font-poppins font-bold text-xl">Bandit XVI</h3>
+                        <p class="font-poppins font-bold text-gris text-sm">Size:</p>
+                        <p class="font-poppins font-bold text-gris text-sm">Color:</p>
+                        <p class="font-poppins font-bold text-gris text-sm">Quantity:</p>
+                        <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-2 py-1">
+                            <span class="menos font-poppins font-bold text-gris text-sm border-r border-solid border-gris px-2">-</span>
+                            <span class="num font-poppins font-bold text-gris text-sm">01</span>
+                            <span class="mas font-poppins font-bold text-gris text-sm border-l border-solid border-gris px-2"">+</span>
+                        </div>
+                        <p class="font-poppins font-bold text-xl">$899</p>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
 
-    <main class="main bg-gray-50">
+    <!-- <main class="main bg-gray-50">
 
 
         <div class="grid grid-cols-1 lg:grid lg:grid-cols-4">
@@ -303,7 +315,7 @@
 
         
 
-    </footer>
+    </footer> -->
 
     <script src="./js/main.js"></script>
 
