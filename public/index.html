@@ -12,37 +12,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <!-- TÍTULO -->
-    <title>F-ONE</title>
+    <title>F-ONE: Kitesurf, Foil, Surf Foil and Wing Foil</title>
 
     <!-- npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --watch -->
 
 </head>
+
 <body>
 
     <header class="sticky top-0 z-20 flex flex-col">
         <div class="sticky top-0 z-40 h-20 w-full px-6 flex items-center justify-between bg-white border-b border-solid border-border lg:px-8">
             <i class='bx bx-menu cursor-pointer text-2xl lg:hidden'></i>
-            <i class='bx bx-x cursor-pointer text-2xl hidden'></i>
+            <i class='bx bx-x bx-x-1 cursor-pointer text-2xl hidden'></i>
             <a href="index.html"><img src="./assets/img/logo2.png" alt="" class="w-auto h-5"></a>
             <nav class="hidden lg:flex">
                 <ul class="lg:flex lg:gap-14">
-                    <li class=""><a href="" class="font-poppins font-bold text-black">KITESURF</a></li>
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
-                    <li class=""><a href="" class="font-poppins font-semibold text-black">WING FOIL</a></li>
+                    <li class=""><a href="" class="font-roboto text-black text-sm font-semibold tracking-widest">KITESURF</a></li>
+                    <li class=""><a href="" class="font-roboto text-black text-sm font-semibold tracking-widest">FOIL</a></li>
+                    <li class=""><a href="" class="font-roboto text-black text-sm font-semibold tracking-widest">SURF FOIL</a></li>
+                    <li class=""><a href="" class="font-roboto text-black text-sm font-semibold  tracking-widest">WING FOIL</a></li>
                 </ul>
             </nav>
-            <i class='bx bx-cart-alt cursor-pointer text-2xl'></i>
+            <i class='bx bx-cart-alt cursor-pointer text-2xl flex'></i>
+            <i class='bx bx-x bx-x-2 cursor-pointer text-2xl hidden'></i>
         </div>
-        <div class="container mobile-menu w-full h-screen px-6 pt-16 hidden items-center justify-between z-30 bg-gray-50">
-            <nav class="h-full w-full flex justify-center">
+        <div class="mobile-menu w-full h-full px-6 pt-16 hidden items-center justify-between z-30">
+            <nav class="flex justify-center">
                 <ul class="flex flex-col items-center gap-8">
                     <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">WING FOIL</a></li>
                     <li class=""><a href="" class="font-poppins font-semibold text-black">F-ONE</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="cart-menu w-full h-full px-6 pt-16 hidden items-center justify-between z-30">
+            <nav class="flex justify-center">
+                <!-- ESTE NAV no va, va un div, conservas el H-FULL -->
+                <ul class="flex flex-col items-center gap-8">
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">KITESURF</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">FOIL</a></li>
+                    <li class=""><a href="" class="font-poppins font-semibold text-black">SURF FOIL</a></li>
                 </ul>
             </nav>
         </div>
@@ -55,19 +69,19 @@
         <div class="grid grid-cols-1 lg:grid lg:grid-cols-4">
             <div class="group h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-kite.png" alt="" class="absolute w-full grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl transition duration-700 group-hover:scale-110">Kitesurf</h2></a>
+                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Kitesurf</h2></a>
             </div>
             <div class="group h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-foil.png" alt="" class="absolute w-full grayscale ttransition duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl transition duration-700 group-hover:scale-110 transition duration-700 group-hover:scale-110">Foil</h2></a>
+                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Foil</h2></a>
             </div>
             <div class="group h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-surffoil.png" alt="" class="absolute w-full grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl transition duration-700 group-hover:scale-110">Surf Foil</h2></a>
+                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Surf Foil</h2></a>
             </div>
             <div class="group h-32 relative flex items-center justify-center overflow-hidden lg:h-128">
                 <img src="./assets/img/main-wingfoil.jpg" alt="" class="absolute w-full grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl transition duration-700 group-hover:scale-110">Wing Foil</h2></a>
+                <a href="" class="z-10"><h2 class="font-poppins font-bold text-gray-50 text-2xl">Wing Foil</h2></a>
             </div>
         </div>
         <div class="grid grid-template-col1">
@@ -282,7 +296,7 @@
 
         <div class="px-10">
             <div class="footer4 copyright flex flex-col justify-center items-center py-4 pt-8 pb-8 border-t border-solid border-gray-200">
-                <p class="font-poppins font-light text-gray-200 text-sm"> Copyright © 2023 Bearzotti, Iván Danilo</p>
+                <p class="font-poppins font-light text-gray-200 text-sm"> Copyright © 2023 Bearzotti, Iván Danilo.</p>
                 <p class="font-poppins font-light text-gray-200 text-sm">All rights reserved</p>
             </div>
         </div>
