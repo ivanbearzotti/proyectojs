@@ -743,16 +743,6 @@ video {
   border-color: rgb(52 52 52 / var(--tw-border-opacity));
 }
 
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
-.border-gray-50 {
-  --tw-border-opacity: 1;
-  border-color: rgb(249 250 251 / var(--tw-border-opacity));
-}
-
 .bg-bandit1 {
   --tw-bg-opacity: 1;
   background-color: rgb(255 65 0 / var(--tw-bg-opacity));
