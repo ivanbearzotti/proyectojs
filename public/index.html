@@ -60,24 +60,42 @@
             </div>
         </div>
         <div class="cart-menu w-full h-full px-6 pt-6 hidden z-30 gap-8 bg-white">
-            <div class="cart-card flex bg-white p-4 rounded-xl drop-shadow-xl justify-between">
-                <div class="cart-card-img">
-                    <img src="./assets/img/bandit1.png" alt="" class="h-32">
-                </div>
-                <div class="cart-card-info h-full">
-                    <div class="name-description flex flex-col gap-2">
-                        <h3 class="font-poppins font-bold text-lg">Bandit XVI</h3>
-                        <p class="font-poppins font-bold text-gris text-sm">Size:</p>
+            <div class="shopping-cart pb-4 border-b border-solid border-gris">
+                <p class="font-roboto font-bold text-xl text-center">SHOPPING CART</p>
+            </div>
+            <div class="flex flex-col">
+                <p class="font-poppins font-ligth text-center p-4">Your shopping cart is empty.</p>
+            </div>
+            <div class="cart-cards grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                <div class="cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl">
+                    <div class="cart-card-img flex items-center">
+                        <img src="./assets/img/bandit1.png" alt="" class="h-36">
+                    </div>
+                    <div class="card-card-info flex flex-col gap-2">
+                        <div class="name-type-delete flex gap-10">
+                            <div class="name-type flex flex-col">
+                                <h3 class="font-poppins font-bold text-lg">Bandit XVI</h3>
+                                <p class="font-poppins font-normal text-gris text-sm">Freestyle</p>
+                            </div>
+                            <button class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
+                        </div>
                         <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
                             <span class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
                             <span class="num font-poppins font-bold text-gris text-md">1</span>
                             <span class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
                         </div>
-                        <p class="font-poppins font-bold text-xl">$899</p>
+                        <div class="unit-price-total">
+                            <div class="unit-price flex items-center justify-between">
+                                <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
+                                <p class="price font-poppins font-bold">$899</p>
+                            </div>
+                            <div class="total-price flex items-center justify-between">
+                                <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
+                                <p class="price font-poppins font-bold">$899</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="">
-                    <button class="bg-gray-200 p-1 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
                 </div>
             </div>
         </div>
@@ -122,159 +140,7 @@
 
 
 
-        <div class="productos grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8 lg:grid lg:grid-cols-4">
-
-            <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
-                <div class="card-img flex justify-center">
-                    <img src="./assets/img/bandit1.png" alt="Bandit XVI" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
-                </div>
-                <div class="card-info flex flex-col gap-1">
-                    <div class="name-description-price flex justify-between">
-                        <div class="name-description">
-                            <h3 class="font-poppins font-bold text-xl">Bandit XVI</h3>
-                            <p class="font-poppins font-normal text-gris">Freeride</p>
-                        </div>
-                        <div class="price">
-                            <p class="font-poppins font-bold text-xl">$899</p>
-                        </div>
-                    </div>
-                    <div class="size-colors flex flex-col gap-2">
-                        <div class="size flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Size</p>
-                            <div class="size-buttons container flex gap-2">
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">8m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">10m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">12m</button>
-                            </div>
-                        </div>
-                        <div class="colors flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Colors</p>
-                            <div class="colors-buttons flex gap-2">
-                                <div class="container button1 h-8 w-8 rounded-full bg-bandit1">
-                                </div>
-                                <div class="container button1 h-8 w-8 rounded-full bg-bandit2">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart">
-                    <button class="font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
-                <div class="card-img flex justify-center">
-                    <img src="./assets/img/wtf.png" alt="WTF" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
-                </div>
-                <div class="card-info flex flex-col gap-1">
-                    <div class="name-description-price flex justify-between">
-                        <div class="name-description">
-                            <h3 class="font-poppins font-bold text-xl">WTF?! V2</h3>
-                            <p class="font-poppins font-normal text-gris">Freestyle</p>
-                        </div>
-                        <div class="price">
-                            <p class="font-poppins font-bold text-xl">$899</p>
-                        </div>
-                    </div>
-                    <div class="size-colors flex flex-col gap-2">
-                        <div class="size flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Size</p>
-                            <div class="size-buttons container flex gap-2">
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">8m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">10m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">12m</button>
-                            </div>
-                        </div>
-                        <div class="colors flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Colors</p>
-                            <div class="colors-buttons flex gap-2">
-                                <div class="container button1 h-8 w-8 rounded-full bg-bandit1">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart">
-                    <button class="font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
-                <div class="card-img flex justify-center">
-                    <img src="./assets/img/bullit.png" alt="Bullit" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
-                </div>
-                <div class="card-info flex flex-col gap-1">
-                    <div class="name-description-price flex justify-between">
-                        <div class="name-description">
-                            <h3 class="font-poppins font-bold text-xl">Bullit V2</h3>
-                            <p class="font-poppins font-normal text-gris">Big Air</p>
-                        </div>
-                        <div class="price">
-                            <p class="font-poppins font-bold text-xl">$899</p>
-                        </div>
-                    </div>
-                    <div class="size-colors flex flex-col gap-2">
-                        <div class="size flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Size</p>
-                            <div class="size-buttons container flex gap-2">
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">8m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">10m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">12m</button>
-                            </div>
-                        </div>
-                        <div class="colors flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Colors</p>
-                            <div class="colors-buttons flex gap-2">
-                                <div class="container button1 h-8 w-8 rounded-full bg-bullit">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart">
-                    <button class="font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
-                <div class="card-img flex justify-center">
-                    <img src="./assets/img/breeze.png" alt="Breeze" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
-                </div>
-                <div class="card-info flex flex-col gap-1">
-                    <div class="name-description-price flex justify-between">
-                        <div class="name-description">
-                            <h3 class="font-poppins font-bold text-xl">Breeze V4</h3>
-                            <p class="font-poppins font-normal text-gris">Wave</p>
-                        </div>
-                        <div class="price">
-                            <p class="font-poppins font-bold text-xl">$899</p>
-                        </div>
-                    </div>
-                    <div class="size-colors flex flex-col gap-2">
-                        <div class="size flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Size</p>
-                            <div class="size-buttons container flex gap-2">
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">8m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">10m</button>
-                                <button class="font-poppins font-normal text-gris text-sm bg-gray-200 px-4 py-2 rounded-lg">12m</button>
-                            </div>
-                        </div>
-                        <div class="colors flex flex-col gap-1">
-                            <p class="font-poppins font-bold text-gris text-sm">Colors</p>
-                            <div class="colors-buttons flex gap-2">
-                                <div class="container button1 h-8 w-8 rounded-full bg-breeze">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart">
-                    <button class="font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg">Add to Cart</button>
-                </div>
-            </div>
-
-
+        <div id="productos" class="grid grid-cols-1 px-10 pb-10 gap-4 md:grid md:grid-cols-2 md:gap-8 lg:grid lg:grid-cols-4">
         </div>
 
     </main>
@@ -326,6 +192,7 @@
 
     </footer>
 
+    <script src="./js/products.js"></script>
     <script src="./js/main.js"></script>
 
 </body>

@@ -72,44 +72,5 @@ menos.addEventListener("click", () => {
         a--;
         num.innerText = a;
     }
-    
 })
 
-// PRODUCTOS
-
-productos = [
-    {id: 1,
-    name: "Bandit XVI",
-    type: "Freeride",
-    size: ["8m", "10m", "12m"],
-    color: "orange",
-    price: 899,
-    stock: 2,
-    img: "./assets/img/bandit1.png"},
-    {id: 2,
-    name: "WTF?! V2",
-    type: "Freestyle",
-    size: ["8m", "10m", "12m"],
-    color: "orange",
-    price: 899,
-    stock: 2,
-    img: "./assets/img/bandit1.png"},
-    {id: 3,
-    name: "Bullit V2",
-    type: "Big Air",
-    size: ["8m", "10m", "12m"],
-    color: "blue",
-    price: 899,
-    stock: 2,
-    img: "./assets/img/bandit1.png"},
-    {id: 4,
-    name: "Breeze V4",
-    type: "Wave",
-    size: ["8m", "10m", "12m"],
-    color: "orange",
-    price: 899,
-    stock: 2,
-    img: "./assets/img/wtf.png"},
-]
-
-console.log(productos);
