@@ -112,6 +112,7 @@ let contenedorProductos = document.getElementById("productos");
 let cartCards = document.getElementById("cart-cards");
 
 productos.forEach(producto => {
+
     let cardContainer = document.createElement("div");
     contenedorProductos.append(cardContainer);
     cardContainer.className = "card-container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105";
@@ -144,6 +145,7 @@ productos.forEach(producto => {
     botonAgregar.innerText = "Add to cart";
 
     botonAgregar.addEventListener("click", () => {
+        cartCards.innerHTML = "";
         carrito.push(
             {id: producto.id,
             name: producto.name,
@@ -190,4 +192,3 @@ productos.forEach(producto => {
 });
 
 // CARRITO DE COMPRAS
-
