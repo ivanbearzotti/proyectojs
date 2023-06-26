@@ -134,10 +134,8 @@ productos.forEach(producto => {
     botonAgregar.innerText = "Add to cart";
 
     botonAgregar.addEventListener("click", () => {
-
-        const idProd = producto.id;
         
-        const prodAgregado = productos.find( (prod) => prod.id === idProd);
+        const prodAgregado = productos.find( (prod) => prod.id === producto.id);
 
         console.log(prodAgregado);
 
@@ -147,8 +145,8 @@ productos.forEach(producto => {
 
         botonCompra.classList.remove("hidden");
 
-        if(carrito.some(prod => prod.id === idProd)){
-            const index = carrito.findIndex(prod => prod.id === idProd);
+        if(carrito.some(prod => prod.id === producto.id)){
+            const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
             carrito[index].cantidad++;
             cartCards.innerHTML = "";
             carrito.forEach(productoCarro => {
@@ -169,7 +167,7 @@ productos.forEach(producto => {
                         </div>
                         <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
                             <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
-                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">1</span>
+                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
                             <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
                         </div>
                         <div class="unit-price-total">
@@ -189,22 +187,17 @@ productos.forEach(producto => {
                 let num = document.getElementById(`num${productoCarro.id}`);
                 let mas = document.getElementById(`mas${productoCarro.id}`);
                 let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
-                let a = carrito[index].cantidad;
-                num.innerText = a;
-                totalPrice.innerText = "$" + parseInt(`${productoCarro.price}`)*a;
 
                 mas.addEventListener("click", () => {
-                    a++,
-                    num.innerText = a;
-                    totalPrice.innerText = "$" + parseInt(`${productoCarro.price}`)*a;
-                    carrito[index].cantidad++;
+                    productoCarro.cantidad++;
+                    num.innerText = productoCarro.cantidad;
+                    totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
                 });
                 menos.addEventListener("click", () => {
-                    if(a>1){
-                        a--,
-                        num.innerText = a;
-                        totalPrice.innerText = "$" + parseInt(`${productoCarro.price}`)*a;
-                        carrito[index].cantidad--;
+                    if(productoCarro.cantidad>1){
+                        productoCarro.cantidad--;
+                        num.innerText = productoCarro.cantidad;
+                        totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
                     }
                 });
             });
@@ -212,6 +205,7 @@ productos.forEach(producto => {
         }else{
             prodAgregado.cantidad = 1;
             carrito.push(prodAgregado);
+            const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
             cartCards.innerHTML = "";
             carrito.forEach(productoCarro => {
                 let cartCard = document.createElement("div");
@@ -231,7 +225,7 @@ productos.forEach(producto => {
                         </div>
                         <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
                             <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
-                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">1</span>
+                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
                             <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
                         </div>
                         <div class="unit-price-total">
@@ -251,25 +245,25 @@ productos.forEach(producto => {
                 let num = document.getElementById(`num${productoCarro.id}`);
                 let mas = document.getElementById(`mas${productoCarro.id}`);
                 let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
-                let a = 1;
+
                 mas.addEventListener("click", () => {
-                    a++,
-                    num.innerText = a;
-                    totalPrice.innerText = "$" + parseInt(`${productoCarro.price}`)*a;
-                    carrito[index].cantidad++;
+                    productoCarro.cantidad++;
+                    num.innerText = productoCarro.cantidad;
+                    totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
                 });
                 menos.addEventListener("click", () => {
-                    if(a>1){
-                        a--,
-                        num.innerText = a;
-                        totalPrice.innerText = "$" + parseInt(`${productoCarro.price}`)*a;
-                        carrito[index].cantidad--;
+                    if(productoCarro.cantidad>1){
+                        productoCarro.cantidad--;
+                        num.innerText = productoCarro.cantidad;
+                        totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
                     }
                 });
 
                 let deleteButton = document.getElementById(`delete-button${productoCarro.id}`);
                 deleteButton.addEventListener("click", () => {
-                    // carrito = carrito.filter( (prod) => prod.id !== productoCarro.id);
+                    const index = carrito.indexOf(productoCarro);
+                    carrito.splice(index, 1);
+                    cartCard.remove();
                 });
             });
         };
