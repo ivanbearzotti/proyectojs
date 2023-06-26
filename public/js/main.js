@@ -96,6 +96,10 @@ let cartCards = document.getElementById("cart-cards");
 
 let cartEmpty = document.getElementById("cart-empty");
 
+let sumatoriaCarrito = document.getElementById("sumatoria-carrito");
+
+let botonCompra = document.getElementById("boton-compra")
+
 productos.forEach(producto => {
 
     let cardContainer = document.createElement("div");
@@ -136,6 +140,12 @@ productos.forEach(producto => {
         const prodAgregado = productos.find( (prod) => prod.id === idProd);
 
         console.log(prodAgregado);
+
+        cartEmpty.classList.add("hidden");
+
+        sumatoriaCarrito.classList.remove("hidden");
+
+        botonCompra.classList.remove("hidden");
 
         if(carrito.some(prod => prod.id === idProd)){
             const index = carrito.findIndex(prod => prod.id === idProd);
