@@ -56,23 +56,6 @@ closeCart.addEventListener('click', () => {
 
 // CONTADOR DE CANTIDAD
 
-let menos = document.querySelector(".menos");
-let mas = document.querySelector(".mas");
-let num = document.querySelector(".num");
-
-let a = 1;
-
-mas.addEventListener("click", () => {
-    a++;
-    num.innerText = a;
-})
-
-menos.addEventListener("click", () => {
-    if(a>1){
-        a--;
-        num.innerText = a;
-    }
-})
 
 // PRODUCTOS
 
@@ -113,87 +96,230 @@ let cartCards = document.getElementById("cart-cards");
 
 let cartEmpty = document.getElementById("cart-empty");
 
-let botonesAgregar = document.querySelector(".boton-agregar");
+let sumatoriaCarrito = document.getElementById("sumatoria-carrito");
 
-let botonesBorrar = document.querySelectorAll(".boton-borrar");
-
+let botonCompra = document.getElementById("boton-compra")
 
 productos.forEach(producto => {
-    contenedorProductos.innerHTML += `
-        <div class="card container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105">
-            <div class="card-img flex justify-center">
-                <img src="${producto.img}" alt="${producto.name}" class="w-full lg:transition lg:duration-300 lg:hover:scale-105">
+
+    let cardContainer = document.createElement("div");
+    contenedorProductos.append(cardContainer);
+    cardContainer.className = "card-container bg-white rounded-xl flex flex-col p-8 gap-4 drop-shadow-xl lg:transition lg:duration-300 lg:hover:scale-105";
+
+    let cardImg = document.createElement("div");
+    cardContainer.append(cardImg);
+    cardImg.className = "card-img";
+    cardImg.innerHTML = `
+        <img src="${producto.img}" alt="${producto.name}" class="flex justify-center w-full lg:transition lg:duration-300 lg:hover:scale-105">
+    `;
+
+    let cardInfo = document.createElement("div");
+    cardContainer.append(cardInfo);
+    cardInfo.className = "card-info flex flex-col gap-1";
+    cardInfo.innerHTML = `
+        <div class="name-description-price flex justify-between">
+            <div class="name-description">
+                <h3 class="font-poppins font-bold text-xl">${producto.name}</h3>
+                <p class="font-poppins font-normal text-gris">${producto.type}</p>
             </div>
-            <div class="card-info flex flex-col gap-1">
-                <div class="name-description-price flex justify-between">
-                    <div class="name-description">
-                        <h3 class="font-poppins font-bold text-xl">${producto.name}</h3>
-                        <p class="font-poppins font-normal text-gris">${producto.type}</p>
-                    </div>
-                    <div class="price">
-                        <p class="font-poppins font-bold text-xl">$${producto.price}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="cart">
-                <button id="agregar${producto.id}" class="boton-agregar font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2rounded-lg">Add to Cart</button>
+            <div class="price">
+                <p class="font-poppins font-bold text-xl">$${producto.price}</p>
             </div>
         </div>
     `;
 
-    botonesAgregar = document.querySelector(".boton-agregar");
+    let botonAgregar = document.createElement("button");
+    cardContainer.append(botonAgregar);
+    botonAgregar.className = "boton-agregar font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg";
+    botonAgregar.innerText = "Add to cart";
 
-    botonesAgregar.addEventListener("click", () => {
-        const id = producto.id;
-        console.log(id);
-    })
+    botonAgregar.addEventListener("click", () => {
+        
+        const prodAgregado = productos.find( (prod) => prod.id === producto.id);
 
-    // console.log(botonesAgregar)
+        // cartEmpty.classList.add("hidden");
 
-    // botonesAgregar.forEach(boton => {
-    //     boton.addEventListener("click", () => {
-    //         const id = producto.id;
-    //         console.log(id);
-    //     });
-    // })
+        // sumatoriaCarrito.classList.remove("hidden");
+
+        // botonCompra.classList.remove("hidden");
+
+        if(carrito.some(prod => prod.id === producto.id)){
+            const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
+            carrito[index].cantidad++;
+
+            // cartCards.innerHTML = "";
+            // carrito.forEach(productoCarro => {
+            //     let cartCard = document.createElement("div");
+            //     cartCards.append(cartCard);
+            //     cartCard.className = "cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl";
+            //     cartCard.innerHTML = `
+            //         <div class="cart-card-img flex items-center">
+            //             <img src="${productoCarro.img}" alt="${productoCarro.name}" class="h-32">
+            //         </div>
+            //         <div class="card-card-info flex flex-col gap-2">
+            //             <div class="name-type-delete flex gap-10">
+            //                 <div class="name-type flex flex-col">
+            //                     <h3 class="font-poppins font-bold">${productoCarro.name}</h3>
+            //                     <p class="font-poppins font-normal text-gris text-sm">${productoCarro.type}</p>
+            //                 </div>
+            //                 <button id="delete-button${productoCarro.id}" class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
+            //             </div>
+            //             <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
+            //                 <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
+            //                 <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
+            //                 <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
+            //             </div>
+            //             <div class="unit-price-total">
+            //                 <div class="unit-price flex items-center justify-between">
+            //                     <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
+            //                     <p class="price font-poppins font-bold">$${productoCarro.price}</p>
+            //                 </div>
+            //                 <div class="total-price flex items-center justify-between">
+            //                     <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
+            //                     <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     `;
+
+            //     let menos = document.getElementById(`menos${productoCarro.id}`);
+            //     let num = document.getElementById(`num${productoCarro.id}`);
+            //     let mas = document.getElementById(`mas${productoCarro.id}`);
+            //     let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
+
+            //     mas.addEventListener("click", () => {
+            //         productoCarro.cantidad++;
+            //         num.innerText = productoCarro.cantidad;
+            //         totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+            //     });
+            //     menos.addEventListener("click", () => {
+            //         if(productoCarro.cantidad>1){
+            //             productoCarro.cantidad--;
+            //             num.innerText = productoCarro.cantidad;
+            //             totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+            //         }
+            //     });
+            // });
+
+        }else{
+            prodAgregado.cantidad = 1;
+            carrito.push(prodAgregado);
+            // const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
+            // cartCards.innerHTML = "";
+            // carrito.forEach(productoCarro => {
+            //     let cartCard = document.createElement("div");
+            //     cartCards.append(cartCard);
+            //     cartCard.className = "cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl";
+            //     cartCard.innerHTML = `
+            //         <div class="cart-card-img flex items-center">
+            //             <img src="${productoCarro.img}" alt="${productoCarro.name}" class="h-32">
+            //         </div>
+            //         <div class="card-card-info flex flex-col gap-2">
+            //             <div class="name-type-delete flex gap-10">
+            //                 <div class="name-type flex flex-col">
+            //                     <h3 class="font-poppins font-bold">${productoCarro.name}</h3>
+            //                     <p class="font-poppins font-normal text-gris text-sm">${productoCarro.type}</p>
+            //                 </div>
+            //                 <button id="delete-button${productoCarro.id}" class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
+            //             </div>
+            //             <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
+            //                 <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
+            //                 <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
+            //                 <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
+            //             </div>
+            //             <div class="unit-price-total">
+            //                 <div class="unit-price flex items-center justify-between">
+            //                     <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
+            //                     <p class="price font-poppins font-bold">$${productoCarro.price}</p>
+            //                 </div>
+            //                 <div class="total-price flex items-center justify-between">
+            //                     <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
+            //                     <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
+            //                 </div>
+            //             </div>
+            //         </div>
+            //     `;
+
+            //     let menos = document.getElementById(`menos${productoCarro.id}`);
+            //     let num = document.getElementById(`num${productoCarro.id}`);
+            //     let mas = document.getElementById(`mas${productoCarro.id}`);
+            //     let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
+
+            //     mas.addEventListener("click", () => {
+            //         productoCarro.cantidad++;
+            //         num.innerText = productoCarro.cantidad;
+            //         totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+            //     });
+            //     menos.addEventListener("click", () => {
+            //         if(productoCarro.cantidad>1){
+            //             productoCarro.cantidad--;
+            //             num.innerText = productoCarro.cantidad;
+            //             totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+            //         }
+            //     });
+
+            //     let deleteButton = document.getElementById(`delete-button${productoCarro.id}`);
+            //     deleteButton.addEventListener("click", () => {
+            //         const index = carrito.indexOf(productoCarro);
+            //         carrito.splice(index, 1);
+            //         cartCard.remove();
+            //     });
+            // });
+        };
+    });
 });
 
-carrito.forEach(producto => {
-    cartCards.innerHTML += `
-        <div class="cart-card flex gap-4 justify-between bg-white p-4 mt-6 rounded-xl drop-shadow-xl">
-            <div class="cart-card-img flex items-center">
-                <img src="${producto.img}" alt="" class="h-32">
+carrito.forEach(productoCarro => {
+    cartCards.innerHTML = "";
+    let cartCard = document.createElement("div");
+    cartCards.append(cartCard);
+    cartCard.className = "cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl";
+    cartCard.innerHTML += `
+        <div class="cart-card-img flex items-center">
+            <img src="${productoCarro.img}" alt="${productoCarro.name}" class="h-32">
+        </div>
+        <div class="card-card-info flex flex-col gap-2">
+            <div class="name-type-delete flex gap-10">
+                <div class="name-type flex flex-col">
+                    <h3 class="font-poppins font-bold">${productoCarro.name}</h3>
+                    <p class="font-poppins font-normal text-gris text-sm">${productoCarro.type}</p>
+                </div>
+                <button id="delete-button${productoCarro.id}" class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
             </div>
-            <div class="card-card-info flex flex-col gap-2">
-                <div class="name-type-delete flex gap-10">
-                    <div class="name-type flex flex-col">
-                        <h3 class="font-poppins font-bold">${producto.name}</h3>
-                        <p class="font-poppins font-normal text-gris text-sm">${producto.type}</p>
-                    </div>
-                    <button id="borrar${producto.id}" class="boton-borrar bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
+            <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
+                <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
+                <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
+                <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
+            </div>
+            <div class="unit-price-total">
+                <div class="unit-price flex items-center justify-between">
+                    <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
+                    <p class="price font-poppins font-bold">$${productoCarro.price}</p>
                 </div>
-                <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
-                    <span class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
-                    <span class="num font-poppins font-bold text-gris text-md">1</span>
-                    <span class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
-                </div>
-                <div class="unit-price-total">
-                    <div class="unit-price flex items-center justify-between">
-                        <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
-                        <p class="price font-poppins font-bold">$${producto.price}</p>
-                    </div>
-                    <div class="total-price flex items-center justify-between">
-                        <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
-                        <p class="price font-poppins font-bold">$${producto.price}</p>
-                    </div>
+                <div class="total-price flex items-center justify-between">
+                    <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
+                    <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
                 </div>
             </div>
         </div>
     `;
+
+    let menos = document.getElementById(`menos${productoCarro.id}`);
+    let num = document.getElementById(`num${productoCarro.id}`);
+    let mas = document.getElementById(`mas${productoCarro.id}`);
+    let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
+
+    mas.addEventListener("click", () => {
+        productoCarro.cantidad++;
+        num.innerText = productoCarro.cantidad;
+        totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+    });
+    menos.addEventListener("click", () => {
+        if(productoCarro.cantidad>1){
+            productoCarro.cantidad--;
+            num.innerText = productoCarro.cantidad;
+            totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+        }
+    });
 });
-
-
-
-
-
 

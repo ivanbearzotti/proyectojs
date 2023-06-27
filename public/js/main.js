@@ -146,8 +146,30 @@ productos.forEach(producto => {
         botonCompra.classList.remove("hidden");
 
         if(carrito.some(prod => prod.id === producto.id)){
+
             const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
             carrito[index].cantidad++;
+
+            let subtotal = carrito.reduce( (acumulador, producto) => acumulador + producto.price*producto.cantidad,0);
+            sumatoriaCarrito.innerHTML = `
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                    <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                    <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                    <p id="shipping" class="price font-poppins font-bold">$0</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                    <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                </div>
+            `;
+
             cartCards.innerHTML = "";
             carrito.forEach(productoCarro => {
                 let cartCard = document.createElement("div");
@@ -177,7 +199,7 @@ productos.forEach(producto => {
                             </div>
                             <div class="total-price flex items-center justify-between">
                                 <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
-                                <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
+                                <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price*productoCarro.cantidad}</p>
                             </div>
                         </div>
                     </div>
@@ -187,83 +209,282 @@ productos.forEach(producto => {
                 let num = document.getElementById(`num${productoCarro.id}`);
                 let mas = document.getElementById(`mas${productoCarro.id}`);
                 let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
-
                 mas.addEventListener("click", () => {
                     productoCarro.cantidad++;
                     num.innerText = productoCarro.cantidad;
                     totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+                    subtotal = subtotal + productoCarro.price;
+                    sumatoriaCarrito.innerHTML = `
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                            <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                            <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                            <p id="shipping" class="price font-poppins font-bold">$0</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                            <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                        </div>
+                    `;
                 });
                 menos.addEventListener("click", () => {
                     if(productoCarro.cantidad>1){
                         productoCarro.cantidad--;
                         num.innerText = productoCarro.cantidad;
                         totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
-                    }
-                });
-            });
-
-        }else{
-            prodAgregado.cantidad = 1;
-            carrito.push(prodAgregado);
-            const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
-            cartCards.innerHTML = "";
-            carrito.forEach(productoCarro => {
-                let cartCard = document.createElement("div");
-                cartCards.append(cartCard);
-                cartCard.className = "cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl";
-                cartCard.innerHTML = `
-                    <div class="cart-card-img flex items-center">
-                        <img src="${productoCarro.img}" alt="${productoCarro.name}" class="h-32">
-                    </div>
-                    <div class="card-card-info flex flex-col gap-2">
-                        <div class="name-type-delete flex gap-10">
-                            <div class="name-type flex flex-col">
-                                <h3 class="font-poppins font-bold">${productoCarro.name}</h3>
-                                <p class="font-poppins font-normal text-gris text-sm">${productoCarro.type}</p>
+                        subtotal = subtotal - productoCarro.price;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
                             </div>
-                            <button id="delete-button${productoCarro.id}" class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
-                        </div>
-                        <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
-                            <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
-                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
-                            <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
-                        </div>
-                        <div class="unit-price-total">
-                            <div class="unit-price flex items-center justify-between">
-                                <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
-                                <p class="price font-poppins font-bold">$${productoCarro.price}</p>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
                             </div>
-                            <div class="total-price flex items-center justify-between">
-                                <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
-                                <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
                             </div>
-                        </div>
-                    </div>
-                `;
-
-                let menos = document.getElementById(`menos${productoCarro.id}`);
-                let num = document.getElementById(`num${productoCarro.id}`);
-                let mas = document.getElementById(`mas${productoCarro.id}`);
-                let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
-
-                mas.addEventListener("click", () => {
-                    productoCarro.cantidad++;
-                    num.innerText = productoCarro.cantidad;
-                    totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
-                });
-                menos.addEventListener("click", () => {
-                    if(productoCarro.cantidad>1){
-                        productoCarro.cantidad--;
-                        num.innerText = productoCarro.cantidad;
-                        totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
                     }
                 });
 
                 let deleteButton = document.getElementById(`delete-button${productoCarro.id}`);
                 deleteButton.addEventListener("click", () => {
-                    const index = carrito.indexOf(productoCarro);
-                    carrito.splice(index, 1);
-                    cartCard.remove();
+                    if(carrito.length > 1){
+                        const index = carrito.indexOf(productoCarro);
+                        carrito.splice(index, 1);
+                        cartCard.remove();
+                        subtotal = subtotal - productoCarro.price*productoCarro.cantidad;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
+                    }else{
+                        const index = carrito.indexOf(productoCarro);
+                        carrito.splice(index, 1);
+                        cartCard.remove();
+                        cartEmpty.classList.remove("hidden");
+                        sumatoriaCarrito.classList.add("hidden");
+                        botonCompra.classList.add("hidden");
+                        subtotal = subtotal - productoCarro.price*productoCarro.cantidad;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
+                    };
+                });
+            });
+
+        }else{
+
+            prodAgregado.cantidad = 1;
+            carrito.push(prodAgregado);
+
+            let subtotal = carrito.reduce( (acumulador, producto) => acumulador + producto.price*producto.cantidad,0);
+            sumatoriaCarrito.innerHTML = `
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                    <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                    <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                    <p id="shipping" class="price font-poppins font-bold">$0</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                    <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                </div>
+            `;
+
+            const index = carrito.findIndex( (prod) => prod.id === prodAgregado.id);
+            cartCards.innerHTML = "";
+            carrito.forEach(productoCarro => {
+                let cartCard = document.createElement("div");
+                cartCards.append(cartCard);
+                cartCard.className = "cart-card flex gap-4 justify-between bg-white p-4 mt-4 rounded-xl drop-shadow-xl";
+                cartCard.innerHTML = `
+                    <div class="cart-card-img flex items-center">
+                        <img src="${productoCarro.img}" alt="${productoCarro.name}" class="h-32">
+                    </div>
+                    <div class="card-card-info flex flex-col gap-2">
+                        <div class="name-type-delete flex gap-10">
+                            <div class="name-type flex flex-col">
+                                <h3 class="font-poppins font-bold">${productoCarro.name}</h3>
+                                <p class="font-poppins font-normal text-gris text-sm">${productoCarro.type}</p>
+                            </div>
+                            <button id="delete-button${productoCarro.id}" class="bg-gray-200 py-1 px-2 rounded"><i class='bx bx-trash text-2xl text-gris'></i></button>
+                        </div>
+                        <div class="cont-cant flex bg-gray-200 rounded-lg justify-between items-center px-1 py-1 w-24">
+                            <span id="menos${productoCarro.id}" class="menos font-poppins font-bold text-gris text-md border-r border-solid border-gris px-2 cursor-pointer">-</span>
+                            <span id="num${productoCarro.id}" class="num font-poppins font-bold text-gris text-md">${productoCarro.cantidad}</span>
+                            <span id="mas${productoCarro.id}" class="mas font-poppins font-bold text-gris text-md border-l border-solid border-gris px-2 cursor-pointer">+</span>
+                        </div>
+                        <div class="unit-price-total">
+                            <div class="unit-price flex items-center justify-between">
+                                <p class="unit-p font-poppins font-normal text-gris text-sm">Unit price:</p>
+                                <p class="price font-poppins font-bold">$${productoCarro.price}</p>
+                            </div>
+                            <div class="total-price flex items-center justify-between">
+                                <p class="total-p font-poppins font-normal text-gris text-sm">Total:</p>
+                                <p id="total-price${productoCarro.id}" class="price font-poppins font-bold">$${productoCarro.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                let menos = document.getElementById(`menos${productoCarro.id}`);
+                let num = document.getElementById(`num${productoCarro.id}`);
+                let mas = document.getElementById(`mas${productoCarro.id}`);
+                let totalPrice = document.getElementById(`total-price${productoCarro.id}`);
+
+                mas.addEventListener("click", () => {
+                    productoCarro.cantidad++;
+                    num.innerText = productoCarro.cantidad;
+                    totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+                    subtotal = subtotal + productoCarro.price;
+                    sumatoriaCarrito.innerHTML = `
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                            <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                            <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                            <p id="shipping" class="price font-poppins font-bold">$0</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                            <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                        </div>
+                    `;
+                });
+                menos.addEventListener("click", () => {
+                    if(productoCarro.cantidad>1){
+                        productoCarro.cantidad--;
+                        num.innerText = productoCarro.cantidad;
+                        totalPrice.innerText = "$" + parseInt(productoCarro.price)*productoCarro.cantidad;
+                        subtotal = subtotal - productoCarro.price;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
+                    };
+                });
+
+                let deleteButton = document.getElementById(`delete-button${productoCarro.id}`);
+                deleteButton.addEventListener("click", () => {
+
+                    if(carrito.length > 1){
+                        const index = carrito.indexOf(productoCarro);
+                        carrito.splice(index, 1);
+                        cartCard.remove();
+                        subtotal = subtotal - productoCarro.price*productoCarro.cantidad;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
+                    }else{
+                        const index = carrito.indexOf(productoCarro);
+                        carrito.splice(index, 1);
+                        cartCard.remove();
+                        cartEmpty.classList.remove("hidden");
+                        sumatoriaCarrito.classList.add("hidden");
+                        botonCompra.classList.add("hidden");
+                        subtotal = subtotal - productoCarro.price*productoCarro.cantidad;
+                        sumatoriaCarrito.innerHTML = `
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                                <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                                <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                                <p id="shipping" class="price font-poppins font-bold">$0</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                                <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                            </div>
+                        `;
+                    };
                 });
             });
         };
