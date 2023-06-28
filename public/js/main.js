@@ -278,13 +278,21 @@ if(localStorage.getItem("carritoStorage")){
                     </div>
                 `;
                 carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                carritoStorage = null;
             };
         });
     });
 
 }else{
     carrito = [];
+
     carritoStorage = [];
+
+    cartEmpty.classList.remove("hidden");
+
+    sumatoriaCarrito.classList.add("hidden");
+
+    botonCompra.classList.add("hidden");
 };
 
 productos.forEach(producto => {
@@ -506,6 +514,7 @@ productos.forEach(producto => {
                             </div>
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                        carritoStorage = null;
                     };
                 });
             });
@@ -685,6 +694,7 @@ productos.forEach(producto => {
                             </div>
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                        carritoStorage = null;
                     };
                 });
             });
