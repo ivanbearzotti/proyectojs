@@ -103,7 +103,34 @@ let carrito;
 let carritoStorage = JSON.parse(localStorage.getItem("carritoStorage"));
 
 if(localStorage.getItem("carritoStorage")){
+
+    cartEmpty.classList.add("hidden");
+
+    sumatoriaCarrito.classList.remove("hidden");
+
+    botonCompra.classList.remove("hidden");
+
     carrito = carritoStorage;
+
+    let subtotal = carrito.reduce( (acumulador, producto) => acumulador + producto.price*producto.cantidad,0);
+            sumatoriaCarrito.innerHTML = `
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Subtotal:</p>
+                    <p id="subtotal" class="price font-poppins font-bold">$${subtotal}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Tax (7%):</p>
+                    <p id="tax" class="price font-poppins font-bold">$${parseFloat((subtotal*0.07).toFixed(2))}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-poppins font-normal text-gris w-3/4 flex justify-end">Shipping:</p>
+                    <p id="shipping" class="price font-poppins font-bold">$0</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="font-roboto font-bold text-black text-xl w-3/4 flex justify-end">TOTAL:</p>
+                    <p id="total" class="price font-poppins font-bold text-xl">$${(subtotal*1.07).toFixed(2)}</p>
+                </div>
+            `;
 
     carrito.forEach(productoCarro => {
         let cartCard = document.createElement("div");
