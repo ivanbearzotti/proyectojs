@@ -251,6 +251,21 @@ if(localStorage.getItem("carritoStorage")){
                     </div>
                 `;
                 carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                })
             }else{
                 const index = carrito.indexOf(productoCarro);
                 carrito.splice(index, 1);
@@ -279,6 +294,21 @@ if(localStorage.getItem("carritoStorage")){
                 `;
                 carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
                 carritoStorage = null;
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                })
             };
         });
     });
@@ -330,6 +360,22 @@ productos.forEach(producto => {
 
     botonAgregar.addEventListener("click", () => {
         
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: `<b>${producto.name}</b> has been added to the cart!`
+        })
+
         const prodAgregado = productos.find( (prod) => prod.id === producto.id);
 
         console.log(prodAgregado);
@@ -487,6 +533,21 @@ productos.forEach(producto => {
                             </div>
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                        })
                     }else{
                         const index = carrito.indexOf(productoCarro);
                         carrito.splice(index, 1);
@@ -515,6 +576,21 @@ productos.forEach(producto => {
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
                         carritoStorage = null;
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                        })
                     };
                 });
             });
@@ -667,6 +743,21 @@ productos.forEach(producto => {
                             </div>
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                        })
                     }else{
                         const index = carrito.indexOf(productoCarro);
                         carrito.splice(index, 1);
@@ -695,6 +786,21 @@ productos.forEach(producto => {
                         `;
                         carritoStorage = localStorage.setItem("carritoStorage", JSON.stringify(carrito));
                         carritoStorage = null;
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: `<b>${productoCarro.name}</b> has been deleted to the cart!`
+                        })
                     };
                 });
             });
