@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Bandit XVI",
+        "type": "Freeride",
+        "price": 899,
+        "stock": 2,
+        "img": "./assets/img/bandit1.png"
+    },
+    {
+        "id": 2,
+        "name": "WTF?! V2",
+        "type": "Freestyle",
+        "price": 799,
+        "stock": 2,
+        "img": "./assets/img/wtf.png"
+    },
+    {
+        "id": 3,
+        "name": "Bullit V2",
+        "type": "Big Air",
+        "price": 899,
+        "stock": 2,
+        "img": "./assets/img/bullit.png"
+    },
+    {
+        "id": 4,
+        "name": "Breeze V4",
+        "type": "Wave",
+        "price": 799,
+        "stock": 2,
+        "img": "./assets/img/breeze.png"
+    }
+]

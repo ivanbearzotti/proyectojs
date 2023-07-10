@@ -43,7 +43,7 @@
                 </ul>
             </nav>
             <i class='bx bx-cart-alt cursor-pointer text-2xl flex'>
-                <p class="font-poppins font-ligth text-center text-sm"></p>
+                <p id="num-carro" class="font-poppins font-ligth text-center text-sm"></p>
             </i>
             <i class='bx bx-x bx-x-2 cursor-pointer text-2xl hidden'></i>
         </div>
@@ -124,8 +124,48 @@
                     <p id="total" class="price font-poppins font-bold text-xl">$899</p>
                 </div> -->
             </div>
-            <button id="boton-compra" class=" hidden boton-comprar font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg mt-4 mb-8">Buy now</button>
+            <button id="boton-compra" class="hidden boton-comprar font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg mt-4 mb-8">Check out</button>
+            <div id="checkout-menu" class="hidden">
+                <div class="checkout pb-4 border-b border-solid border-gris">
+                    <p class="font-roboto font-bold text-xl text-center">CHECK OUT</p>
+                </div>
+                <p class="shipping-info font-roboto font-bold pt-4 pb-2">1. SHIPPING INFORMATION</p>
+                <form class="flex flex-col gap-2" action="">
+                    <label class="font-poppins font-normal text-gris" for="">First name: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">Last name: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">Street Address: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">Apartment/Unit/Suite</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text">
+                    <label class="font-poppins font-normal text-gris" for="">Zip Code: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">City: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">State: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="text" required>
+                    <label class="font-poppins font-normal text-gris" for="">E-mail: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="email" required>
+                    <label class="font-poppins font-normal text-gris" for="">Phone: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="number" required>
+                </form>
+                <p class="shipping-info font-roboto font-bold pt-4 pb-2">2. PAYMENT INFORMATION</p>
+                <form class="flex flex-col gap-2" action="">
+                    <label class="font-poppins font-normal text-gris" for="">Card number: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="number" required>
+                    <label class="font-poppins font-normal text-gris" for="">Expiration month: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="number" required>
+                    <label class="font-poppins font-normal text-gris" for="">Expiration year: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="number" required>
+                    <label class="font-poppins font-normal text-gris" for="">Security code: *</label>
+                    <input class="border border-solid border-gris rounded py-1 px-2" type="number" required>
+                </form>
+                <button id="boton-buynow" class="font-poppins font-bold text-white text-m bg-gris w-full px-4 py-2 rounded-lg mt-4 mb-8">Buy now</button>
+            </div>
+            
         </div>
+        
     </header>
 
 
